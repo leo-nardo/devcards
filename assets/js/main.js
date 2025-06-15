@@ -5,24 +5,38 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  const completedCardIds = ["001"];
-
+  // Lógica automatizada para carregar cards sequencialmente
   async function initializeMural() {
     cardsGrid.innerHTML = "";
+    let nextThemeSuggestion = "Qualquer Tema"; // Tema padrão
+    let currentId = 1;
 
-    let nextThemeSuggestion = "Qualquer Tema"; // Um tema padrão caso o último card não sugira um
+    while (true) {
+      const cardId = String(currentId).padStart(3, "0");
+      const cardPath = `cards/${cardId}/card.html`;
 
-    for (const id of completedCardIds) {
-      const cardData = await createVisualCardElement(id);
-      if (cardData) {
-        cardsGrid.appendChild(cardData.element);
-        if (cardData.nextTheme) {
-          nextThemeSuggestion = cardData.nextTheme;
+      try {
+        const response = await fetch(cardPath);
+        if (!response.ok) {
+          // Para de carregar quando um card não for encontrado (ex: 404)
+          break;
         }
+
+        const cardData = await createVisualCardElement(cardId, response);
+        if (cardData) {
+          cardsGrid.appendChild(cardData.element);
+          if (cardData.nextTheme) {
+            nextThemeSuggestion = cardData.nextTheme;
+          }
+        }
+      } catch (error) {
+        console.error(`Falha ao verificar o card #${cardId}:`, error);
+        break; // Para em caso de erro de rede, etc.
       }
+      currentId++;
     }
 
-    const nextCardId = String(completedCardIds.length + 1).padStart(3, "0");
+    const nextCardId = String(currentId).padStart(3, "0");
     const placeholderCard = createThemePlaceholderElement(
       nextCardId,
       nextThemeSuggestion
@@ -30,10 +44,10 @@ document.addEventListener("DOMContentLoaded", () => {
     cardsGrid.appendChild(placeholderCard);
   }
 
-  async function createVisualCardElement(id) {
+  async function createVisualCardElement(id, response) {
     try {
       const [htmlContent, cssContent] = await Promise.all([
-        fetch(`cards/${id}/card.html`).then((res) => res.text()),
+        response.text(),
         fetch(`cards/${id}/style.css`).then((res) => res.text()),
       ]);
 
@@ -59,14 +73,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  /**
-   * ATUALIZADO: Cria um card placeholder que mostra o tema como uma sugestão.
-   */
   function createThemePlaceholderElement(id, theme) {
     const placeholderCard = document.createElement("div");
     placeholderCard.className = "theme-placeholder-card";
 
-    // O texto agora reflete a nova lógica
     placeholderCard.innerHTML = `
           <div class="placeholder-content">
               <span class="placeholder-tag">Sugestão de Tema</span>
@@ -74,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <p class="placeholder-suggestion">...ou crie o seu próprio!</p>
               <span class="placeholder-id">#${id}</span>
           </div>
-          <a href="https://github.com/leo-nardo/devcards/blob/main/CONTRIBUTING.md" target="_blank" class="btn-accept">Criar Card</a>
+          <a href="https://github.com/leo-nardo/devcards/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer" class="btn-accept">Criar Card</a>
       `;
 
     return placeholderCard;
