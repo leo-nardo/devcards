@@ -3,58 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DevCards: Chain of Code</title>
+    <title>DevCards: Uma Corrente Criativa</title>
     <meta
       name="description"
       content="Uma plataforma gamificada onde desenvolvedores criam cartas visuais e colaborativas com HTML e CSS."
     />
 
-    <!-- Importação de Fontes e Estilos -->
     <link rel="stylesheet" href="assets/css/global.css" />
   </head>
   <body>
-    <!-- Cabeçalho -->
     <header class="header">
       <div class="container">
-        <div class="header-content">
-          <a href="#" class="logo-section">
-            <img
-              src="assets/img/logo.svg"
-              alt="DevCards Logo"
-              width="40"
-              height="40"
-            />
-            <h1 class="main-title">DevCards</h1>
-          </a>
-          <a
-            href="https://github.com/leo-nardo/devcards"
-            class="btn-github"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Contribuir no GitHub
-          </a>
-        </div>
+        <!-- Conteúdo do Header... -->
+        <a href="#" class="logo-section">
+          <img
+            src="assets/img/logo.svg"
+            alt="DevCards Logo"
+            width="40"
+            height="40"
+          />
+          <h1 class="main-title">DevCards</h1>
+        </a>
+        <a
+          href="https://github.com/leo-nardo/devcards"
+          class="btn-github"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Contribuir no GitHub
+        </a>
       </div>
     </header>
 
-    <!-- Conteúdo Principal -->
     <main class="main-content">
       <div class="container">
+        <!-- Seções do Mural e Como Participar... -->
         <section class="section-header">
-          <h2 class="section-title">Mural de Cartas</h2>
+          <h2 class="section-title">Mural de Cards</h2>
           <p class="section-description">
-            Uma corrente de criatividade em HTML e CSS. Passe o mouse sobre uma
-            carta para revelar o desafio.
+            Um espaço para deixar sua marca e mostrar sua criatividade e
+            habilidades.
           </p>
         </section>
 
-        <!-- O Grid onde o JavaScript irá inserir os cards -->
         <div id="cards-grid">
-          <!-- Os cards serão carregados aqui dinamicamente -->
+          <!-- Cards carregados pelo JS -->
         </div>
 
-        <!-- NOVA SEÇÃO: COMO PARTICIPAR -->
         <section id="how-to-participate" class="section-header">
           <h2 class="section-title">Como Participar</h2>
           <p class="section-description">
@@ -63,6 +58,7 @@
           </p>
 
           <div class="steps-grid">
+            <!-- Steps... -->
             <div class="step-card">
               <div class="step-number">1</div>
               <h3 class="step-title">Veja a Última Carta</h3>
@@ -98,7 +94,16 @@
       </div>
     </main>
 
-    <!-- Script Principal -->
+    <!-- NOVO RODAPÉ -->
+    <footer class="footer">
+      <div class="container">
+        <p>
+          &copy; 2024 DevCards: Uma Corretente criativa. Um projeto open-source.
+        </p>
+        <p>Criado com paixão pela comunidade dev.</p>
+      </div>
+    </footer>
+
     <script src="assets/js/main.js"></script>
   </body>
 </html>

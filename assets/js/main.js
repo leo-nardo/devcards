@@ -1,77 +1,91 @@
 document.addEventListener("DOMContentLoaded", () => {
   const cardsGrid = document.getElementById("cards-grid");
+  if (!cardsGrid) {
+    console.error("Erro Crítico: O elemento 'cards-grid' não foi encontrado.");
+    return;
+  }
 
-  const cardIds = ["001"];
+  // Lista dos IDs dos cards que JÁ FORAM COMPLETADOS.
+  const completedCardIds = ["001"];
 
-  async function loadAllCards() {
-    if (!cardsGrid) {
-      console.error(
-        "Erro Crítico: O elemento 'cards-grid' não foi encontrado."
-      );
-      return;
+  async function initializeMural() {
+    cardsGrid.innerHTML = ""; // Limpa o mural
+
+    let nextTheme = "Chuva"; // Tema inicial para o primeiro card
+
+    // 1. Renderiza todos os cards visuais que já foram completados
+    for (const id of completedCardIds) {
+      const cardData = await createVisualCardElement(id);
+      if (cardData) {
+        cardsGrid.appendChild(cardData.element);
+        // Atualiza o tema para o próximo placeholder
+        nextTheme = cardData.nextTheme;
+      }
     }
 
-    for (const id of cardIds) {
-      try {
-        const [htmlContent, cssContent, challengeContent] = await Promise.all([
-          fetch(`cards/${id}/card.html`).then((res) => res.text()),
-          fetch(`cards/${id}/style.css`).then((res) => res.text()),
-          fetch(`cards/${id}/desafio.txt`).then((res) => res.text()),
-        ]);
-
-        createCardElement(id, htmlContent, cssContent, challengeContent);
-      } catch (error) {
-        console.error(`Erro ao processar o card #${id}:`, error);
-        createErrorCard(id);
-      }
+    // 2. No final da corrente, renderiza o card com o próximo tema
+    if (nextTheme) {
+      const nextCardId = String(completedCardIds.length + 1).padStart(3, "0");
+      const placeholderCard = createThemePlaceholderElement(
+        nextCardId,
+        nextTheme
+      );
+      cardsGrid.appendChild(placeholderCard);
     }
   }
 
   /**
-   * Cria a estrutura do card usando Shadow DOM para isolamento de estilo.
+   * Busca os dados e cria o elemento de um card visual.
+   * Retorna o elemento e o tema para o próximo card.
    */
-  function createCardElement(id, htmlContent, cssContent, challengeContent) {
-    const cardContainer = document.createElement("div");
-    cardContainer.className = "dev-card";
-    cardContainer.style.animationDelay = `${(parseInt(id, 10) - 1) * 0.1}s`;
+  async function createVisualCardElement(id) {
+    try {
+      const [htmlContent, cssContent] = await Promise.all([
+        fetch(`cards/${id}/card.html`).then((res) => res.text()),
+        fetch(`cards/${id}/style.css`).then((res) => res.text()),
+      ]);
 
-    // O conteúdo HTML do card, que será o host para o Shadow DOM
-    cardContainer.innerHTML = `
-            <div class="card-inner">
-                <div class="card-front">
-                    <div class="card-content-host"></div>
-                </div>
-                <div class="card-back">
-                    <h3 class="challenge-title">Desafio #${String(
-                      parseInt(id, 10) + 1
-                    ).padStart(3, "0")}</h3>
-                    <pre class="challenge-text">${challengeContent}</pre>
-                </div>
-            </div>
-        `;
+      const cardContainer = document.createElement("div");
+      cardContainer.className = "dev-card";
 
-    cardsGrid.appendChild(cardContainer);
+      const host = document.createElement("div");
+      host.className = "card-content-host";
+      cardContainer.appendChild(host);
 
-    // --- MÁGICA DO SHADOW DOM ---
-    const host = cardContainer.querySelector(".card-content-host");
-    if (host) {
-      // 1. Cria uma "sombra" (ambiente encapsulado) no elemento host.
       const shadowRoot = host.attachShadow({ mode: "open" });
+      shadowRoot.innerHTML = `<style>${cssContent}</style>${htmlContent}`;
 
-      // 2. Cria o HTML e o CSS que viverão DENTRO da sombra.
-      shadowRoot.innerHTML = `
-                <style>${cssContent}</style>
-                ${htmlContent}
-            `;
+      // Extrai o próximo tema do elemento oculto no HTML do card
+      const nextThemeElement = shadowRoot.querySelector("[data-next-theme]");
+      const nextTheme = nextThemeElement
+        ? nextThemeElement.getAttribute("data-next-theme")
+        : null;
+
+      return { element: cardContainer, nextTheme: nextTheme };
+    } catch (error) {
+      console.error(`Erro ao criar o card visual #${id}:`, error);
+      return null;
     }
   }
 
-  function createErrorCard(id) {
-    const errorContainer = document.createElement("div");
-    errorContainer.className = "dev-card-error";
-    errorContainer.innerHTML = `<h3>Erro ao Carregar</h3><p>Card #${id}</p>`;
-    cardsGrid.appendChild(errorContainer);
+  /**
+   * Cria um card placeholder que mostra o próximo tema a ser feito.
+   */
+  function createThemePlaceholderElement(id, theme) {
+    const placeholderCard = document.createElement("div");
+    placeholderCard.className = "theme-placeholder-card";
+
+    placeholderCard.innerHTML = `
+          <div class="placeholder-content">
+              <span class="placeholder-tag">Próximo Tema</span>
+              <h3 class="placeholder-theme">${theme}</h3>
+              <span class="placeholder-id">#${id}</span>
+          </div>
+          <a href="https://github.com/leo-nardo/devcards/" target="_blank" class="btn-accept">Criar Card</a>
+      `;
+
+    return placeholderCard;
   }
 
-  loadAllCards();
+  initializeMural();
 });

@@ -1,0 +1,8 @@
+/* Estilos para o Card #002 */
+
+/* Use classes com prefixo para evitar conflitos */
+.c-002-seu-container-principal {
+  width: 100%;
+  height: 400px;
+  /* ... seja criativo! ... */
+}
