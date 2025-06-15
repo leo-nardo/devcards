@@ -19,77 +19,59 @@ O projeto é uma sequência visual de cartas, onde cada uma é uma interpretaç�
 ```bash
 git clone [https://github.com/leo-nardo/devcards.git](https://github.com/leo-nardo/devcards.git)
 cd devcards
-```
+b) Identifique o Próximo Número
+Verifique a pasta cards/ para saber qual o próximo número da sua carta. Se a última pasta é 001, a sua será 002.
 
-**b) Identifique o Próximo Número**
-Verifique a pasta `cards/` para saber qual o próximo número da sua carta. Se a última pasta é `001`, a sua será `002`.
+Passo 2: Criação dos Arquivos
+a) Crie sua Pasta
+Crie uma nova pasta em cards/ com o próximo número sequencial (ex: 002, 003, ...).
 
-### Passo 2: Criação dos Arquivos
+b) Crie seus Arquivos
+Dentro da sua nova pasta, crie dois arquivos: card.html e style.css.
 
-**a) Crie sua Pasta**
-Crie uma nova pasta em `cards/` com o próximo número sequencial (ex: `002`, `003`, ...).
+card.html (Exemplo para o card #002)
 
-**b) Crie seus Arquivos**
-Dentro da sua nova pasta, crie dois arquivos: `card.html` e `style.css`.
+HTML
 
-**`card.html`**
+<div class="c-002-cyberpunk-card">
+  </div>
 
-```html
-<!-- Autor: [Seu Nome ou Usuário do GitHub] -->
-<!-- Tema Escolhido: [Tema que você desenvolveu, ex: Cyberpunk] -->
-
-<div class="c-002-seu-container-principal">
-  <!-- Sua criação visual em HTML -->
-</div>
-
-<!-- 
-  IMPORTANTE: Defina uma sugestão de tema para o próximo contribuidor!
--->
 <div data-next-theme="Natureza Mística" style="display: none;"></div>
-```
+style.css (Exemplo para o card #002)
 
-**`style.css`**
+CSS
 
-```css
 /* Estilos para o Card #002 */
 
-/* Use classes com prefixo para evitar conflitos */
-.c-002-seu-container-principal {
+/* Use classes com prefixo para evitar conflitos e seja descritivo! */
+.c-002-cyberpunk-card {
   width: 100%;
-  height: 400px; /* Importante para a animação funcionar corretamente */
+  height: 400px;
   /* ... seja criativo! ... */
 }
-```
-
-### Passo 3: Checklist de Qualidade (Obrigatório)
-
+Passo 3: Checklist de Qualidade (Obrigatório)
 Antes de enviar, garanta que sua contribuição siga estas regras:
 
-- [ ] **Prefixo Numérico:** Todas as classes e IDs no seu CSS e HTML **devem** começar com o prefixo do seu card (ex: `.c-002-`).
-- [ ] **CSS Isolado:** Não estilize as tags `body` ou `html` no seu `style.css`.
-- [ ] **Definição da Próxima Sugestão:** Verifique se o seu `card.html` contém o elemento `<div data-next-theme="Sua Sugestão" style="display: none;"></div>`.
-- [ ] **Sem Dependências Externas:** Toda a arte deve ser feita com CSS puro ou SVG embutido.
+[ ] Prefixo Numérico: Todas as classes e IDs no seu CSS e HTML devem começar com o prefixo do seu card (ex: .c-002-).
+[ ] CSS Isolado: Não estilize as tags body ou html no seu style.css.
+[ ] Definição da Próxima Sugestão: Verifique se o seu card.html contém o elemento <div data-next-theme="Sua Sugestão" style="display: none;"></div>.
+[ ] Sem Dependências Externas: Toda a arte deve ser feita com CSS puro ou SVG embutido.
+Passo 4: Teste Localmente
+Com as novas atualizações, você não precisa mais editar nenhum arquivo JavaScript. Apenas inicie um servidor local e seu card será carregado automaticamente na fila.
 
-### Passo 4: Teste Localmente
+Passo 5: Envio (Pull Request)
+Faça o commit apenas dos arquivos da sua pasta.
+Bash
 
-Para visualizar sua carta, abra `assets/js/main.js` e adicione o número do seu card à lista `completedCardIds`.
+git add cards/002/
+git commit -m "feat: Adiciona card #002 com o tema Música"
+Abra um Pull Request no repositório principal.
+Obrigado por ajudar a construir nossa corrente criativa! 🚀
 
-```javascript
-// Exemplo para testar o card #002
-const completedCardIds = ["001", "002"];
+
+### 4. Remoção de Arquivos de Template
+
+Por fim, recomendo que você **delete a pasta `cards/002/`** do seu repositório, pois ela contém apenas arquivos de template. O novo contribuidor deverá criar a pasta e os arquivos do zero, seguindo o guia de contribuição atualizado.
+
+Com estas mudanças, seu projeto estará mais robusto, seguro e muito mais fácil para novos desenvolvedores contribuírem!
 ```
-
-**Atenção:** Lembre-se de **reverter essa mudança** no `main.js` antes de fazer o commit!
-
-### Passo 5: Envio (Pull Request)
-
-1.  Faça o commit apenas dos arquivos da **sua** pasta.
-    ```bash
-    git add cards/002/
-    git commit -m "feat: Adiciona card #002 com o tema Música"
-    ```
-2.  Abra um Pull Request no repositório principal.
-
----
-
-**Obrigado por ajudar a construir nossa corrente criativa!** 🚀
