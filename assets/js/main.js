@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <p class="placeholder-suggestion">...ou crie o seu próprio!</p>
               <span class="placeholder-id">#${id}</span>
           </div>
-          <a href="https://github.com/leo-nardo/devcards/blob/main/CONTRIBUTIING.md" target="_blank" class="btn-accept">Criar Card</a>
+          <a href="https://github.com/leo-nardo/devcards/blob/main/CONTRIBUTING.md" target="_blank" class="btn-accept">Criar Card</a>
       `;
 
     return placeholderCard;
