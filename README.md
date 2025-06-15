@@ -2,8 +2,6 @@
 
 Bem-vindo ao DevCards, uma plataforma colaborativa onde desenvolvedores criam **cartas visuais** usando apenas HTML e CSS. Cada carta é uma interpretação criativa de um **tema**, e propõe o próximo tema para a comunidade, criando uma corrente infinita de arte e código.
 
-![Mural de Cartas](https://devcards-to.vercel.app/)
-
 ## 🎯 Como Funciona a Corrente de Temas
 
 A mecânica é simples e focada na criatividade:
@@ -47,9 +45,9 @@ devcards/
 
 ## 🎪 Como Criar Sua Carta
 
-1.  **Encontre o Tema Atual:** Visite o site do projeto. No final da fila de cartas, você encontrará um placeholder indicando qual é o **tema atual**.
+1.  **Escolha um Tema:** Ao você visitar o site do projeto. No final da fila de cartas, você encontrará um placeholder sugerindo um tema legal, mas você tem a liberdade de escolher o tema que quiser.
 2.  **Crie sua Estrutura:** Crie uma nova pasta em `cards/` com o próximo número sequencial (ex: `002`). Dentro dela, crie seus arquivos `card.html` e `style.css`.
-3.  **Desenvolva sua Arte:** Use sua criatividade para interpretar o tema. Ao terminar, não se esqueça de definir o próximo tema dentro do seu `card.html`.
+3.  **Desenvolva sua Arte:** Use sua criatividade para interpretar o tema. Ao terminar, não se esqueça de deixar uma sugestão do próximo tema dentro do seu `card.html`.
 4.  **Envie:** Abra um Pull Request com sua contribuição.
 
 Para um guia detalhado com o **checklist de qualidade obrigatório**, consulte nosso **[Guia de Contribuição](CONTRIBUTING.md)**.
