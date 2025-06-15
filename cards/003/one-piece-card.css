@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Knewave&family=Outfit:wght@400&family=Roboto:wght@400;700&display=swap');
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #1a1a1a;
+}
+
+.one-piece-card-container {
+    width: 350px;
+    height: 480px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    color: white;
+
+    background-image:
+            linear-gradient(to top, rgba(0, 0, 0, 0.85) 5%, rgba(0, 0, 0, 0) 50%),
+            url('https://www.icegif.com/wp-content/uploads/2024/04/luffy-gear-5-icegif-10.gif');
+
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 25px;
+}
+
+.card-content {
+    text-align: center;
+    width: 100%;
+}
+
+.one-piece-title {
+    font-family: 'Knewave', sans-serif;
+    font-size: 3.5em;
+    margin: 0;
+    color: white;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
+    margin-bottom: 15px; /* Espaço entre o título e as infos do autor */
+}
+
+/* --- NOVO ESTILO PARA O CONTÊINER DO AUTOR --- */
+.author-info {
+    display: flex;
+    flex-direction: column; /* Empilha os itens verticalmente */
+    align-items: center;   /* Centraliza os itens na horizontal */
+    gap: 10px; /* Cria um espaço de 10px entre os itens (autor e link) */
+}
+
+.author-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.one-piece-author {
+    font-family: 'Outfit', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 5px 15px 5px 8px;
+    border-radius: 50px;
+    font-size: 1.1em;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* margin-top removido daqui */
+}
+
+.repo-link {
+    display: inline-flex;
+    align-items: center;
+    /* margin-top removido daqui */
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+}
+
+.repo-link:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+.repo-link svg {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    fill: currentColor;
+}
