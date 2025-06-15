@@ -1,0 +1,205 @@
+/*
+  CSS do Card de Chuva - Versão com Animação Corrigida
+*/
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Space+Grotesk:wght@400&display=swap");
+
+.rainy-card-container {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  background: linear-gradient(to bottom, #2c3e50, #465869);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+/* --- Nuvem --- */
+.cloud-container {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 60px;
+  z-index: 2;
+}
+
+.cloud {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #f2f9fe;
+  border-radius: 30px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  animation: float 8s ease-in-out infinite;
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  background: #f2f9fe;
+  border-radius: 50%;
+}
+
+.cloud::before {
+  width: 100px;
+  height: 100px;
+  top: -50px;
+  left: 25px;
+}
+
+.cloud::after {
+  width: 60px;
+  height: 60px;
+  top: -30px;
+  right: 20px;
+}
+
+/* --- Chuva --- */
+.rain-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.raindrop {
+  position: absolute;
+  bottom: 100%;
+  width: 2px;
+  height: 60px; /* Aumentei um pouco a altura da gota */
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.4)
+  );
+  animation: fall linear infinite;
+  border-radius: 0 0 2px 2px;
+}
+
+/* --- Texto --- */
+.card-content {
+  z-index: 3;
+  text-align: center;
+  color: white;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.rainy-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.rainy-subtitle {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+/* --- Animações --- */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-15px);
+  }
+}
+
+/* CORREÇÃO PRINCIPAL: Ajusta a animação para cobrir todo o card */
+@keyframes fall {
+  from {
+    transform: translateY(
+      -100px
+    ); /* Começa um pouco acima para não aparecer de repente */
+  }
+  to {
+    transform: translateY(
+      500px
+    ); /* A distância precisa ser maior que a altura do card (400px) + altura da gota */
+  }
+}
+
+/* Variações para as gotas de chuva */
+.raindrop:nth-child(1) {
+  left: 10%;
+  animation-duration: 0.8s;
+  animation-delay: 0.2s;
+}
+.raindrop:nth-child(2) {
+  left: 20%;
+  animation-duration: 0.7s;
+  animation-delay: 0.1s;
+}
+.raindrop:nth-child(3) {
+  left: 30%;
+  animation-duration: 0.9s;
+  animation-delay: 0.5s;
+}
+.raindrop:nth-child(4) {
+  left: 40%;
+  animation-duration: 0.6s;
+  animation-delay: 0.3s;
+}
+.raindrop:nth-child(5) {
+  left: 50%;
+  animation-duration: 0.8s;
+  animation-delay: 0s;
+}
+.raindrop:nth-child(6) {
+  left: 60%;
+  animation-duration: 0.75s;
+  animation-delay: 0.6s;
+}
+.raindrop:nth-child(7) {
+  left: 70%;
+  animation-duration: 0.85s;
+  animation-delay: 0.2s;
+}
+.raindrop:nth-child(8) {
+  left: 80%;
+  animation-duration: 0.65s;
+  animation-delay: 0.8s;
+}
+.raindrop:nth-child(9) {
+  left: 90%;
+  animation-duration: 0.9s;
+  animation-delay: 0.4s;
+}
+.raindrop:nth-child(10) {
+  left: 5%;
+  animation-duration: 0.7s;
+  animation-delay: 0.9s;
+}
+.raindrop:nth-child(11) {
+  left: 25%;
+  animation-duration: 0.8s;
+  animation-delay: 0.7s;
+}
+.raindrop:nth-child(12) {
+  left: 35%;
+  animation-duration: 0.6s;
+  animation-delay: 1s;
+}
+.raindrop:nth-child(13) {
+  left: 65%;
+  animation-duration: 0.9s;
+  animation-delay: 0.8s;
+}
+.raindrop:nth-child(14) {
+  left: 85%;
+  animation-duration: 0.7s;
+  animation-delay: 0.3s;
+}
+.raindrop:nth-child(15) {
+  left: 95%;
+  animation-duration: 0.8s;
+  animation-delay: 0.6s;
+}
