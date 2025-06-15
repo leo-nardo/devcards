@@ -2,7 +2,7 @@
 
 Bem-vindo ao DevCards, uma plataforma colaborativa onde desenvolvedores criam **cartas visuais** usando apenas HTML e CSS. Cada carta é uma interpretação criativa de um **tema**, e propõe o próximo tema para a comunidade, criando uma corrente infinita de arte e código.
 
-![Mural de Cartas](#link-do-site)
+![Mural de Cartas](https://devcards-to.vercel.app/)
 
 ## 🎯 Como Funciona a Corrente de Temas
 
