@@ -17,7 +17,7 @@ O projeto é uma sequência visual de cartas, onde cada uma é uma interpretaç�
 **a) Fork e Clone o Repositório**
 
 ```bash
-git clone [https://github.com/leornardoleal/devcards.git](https://github.com/leornardoleal/devcards.git)
+git clone [https://github.com/leo-nardo/devcards.git](https://github.com/leo-nardo/devcards.git)
 cd devcards
 ```
 
