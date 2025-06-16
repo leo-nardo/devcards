@@ -1,89 +1,195 @@
-@import url('https://fonts.googleapis.com/css2?family=Knewave&family=Outfit:wght@400&family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Knewave&family=Outfit:wght@400;700&display=swap');
 
-.c-003-one-piece-card-container {
-    width: 350px;
-    height: 480px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+/* --- Container Principal --- */
+.c-003-container {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(to bottom, #0d1b2a, #1b263b);
     position: relative;
     overflow: hidden;
-    color: white;
-
-    background-image:
-            linear-gradient(to top, rgba(0, 0, 0, 0.85) 5%, rgba(0, 0, 0, 0) 50%),
-            url('https://www.icegif.com/wp-content/uploads/2024/04/luffy-gear-5-icegif-10.gif');
-
-    background-size: cover;
-    background-position: center 30%;
-    background-repeat: no-repeat;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 25px;
-    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
 }
 
-.c-003-card-content {
-    text-align: center;
+/* --- ESTRELA CADENTE (NOVO) --- */
+.c-003-shooting-star {
+    position: absolute;
+    top: -70px;
+    left: 50%;
+    width: 2px;
+    height: 100px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+    transform: rotate(30deg);
+    animation: c-003-shooting-flow 6s infinite ease-in-out;
+    animation-delay: 4s;
+}
+
+@keyframes c-003-shooting-flow {
+    0% {
+        transform: translate(200px, -100px) rotate(30deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-300px, 450px) rotate(30deg);
+        opacity: 0;
+    }
+}
+
+
+/* --- Estrelas e Animação de Piscar --- */
+.c-003-stars {
+    position: absolute;
     width: 100%;
+    height: 100%;
 }
-
-.c-003-one-piece-title {
-    font-family: 'Knewave', sans-serif;
-    font-size: 3.5em;
-    margin: 0;
-    color: white;
-    text-shadow: 3px 3px 8px rgba(0, 0, 0, 1);
-    margin-bottom: 15px;
-}
-
-.c-003-author-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-
-.c-003-author-avatar {
-    width: 35px;
-    height: 35px;
+.c-003-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #e0e1dd;
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.6);
-    margin-right: 10px;
-    object-fit: cover;
+    box-shadow: 0 0 5px #e0e1dd;
+    animation: c-003-twinkle 2s infinite alternate;
+}
+.c-003-star.s1 { top: 10%; left: 20%; animation-delay: 0s; }
+.c-003-star.s2 { top: 30%; left: 80%; animation-delay: 0.5s; }
+.c-003-star.s3 { top: 50%; left: 50%; animation-delay: 1s; }
+.c-003-star.s4 { top: 25%; left: 5%; animation-delay: 1.2s; }
+.c-003-star.s5 { top: 60%; left: 90%; animation-delay: 0.2s; }
+.c-003-star.s6 { top: 80%; left: 30%; animation-delay: 0.8s; }
+
+@keyframes c-003-twinkle {
+    from { opacity: 0.5; }
+    to { opacity: 1; transform: scale(1.2); }
 }
 
-.c-003-one-piece-author {
+/* --- Lua e Animação de Nascer --- */
+.c-003-moon {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: #fdfcdc;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #fdfcdc, 0 0 40px #fdfcdc;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 150%);
+    animation: c-003-moon-rise 8s ease-out 1s forwards;
+}
+@keyframes c-003-moon-rise {
+    to {
+        transform: translate(-50%, -150%);
+    }
+}
+
+/* --- Floresta e Pinheiros --- */
+.c-003-forest {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 150px;
+    background: #0d1b2a;
+    z-index: 5;
+}
+.c-003-pine-tree {
+    position: absolute;
+    bottom: 0;
+    width: 100px;
+    height: 200px;
+    animation: c-003-sway 5s infinite alternate ease-in-out;
+}
+.c-003-pine-tree.t1 { left: 10%; transform-origin: bottom center; }
+.c-003-pine-tree.t2 { left: 45%; transform: scale(0.8); animation-delay: -2s; }
+.c-003-pine-tree.t3 { left: 75%; transform: scale(1.2); animation-delay: -4s; }
+
+.c-003-trunk {
+    position: absolute;
+    bottom: 0;
+    left: 45px;
+    width: 10px;
+    height: 40px;
+    background: #4a4e69;
+}
+.c-003-leaves {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    left: 0;
+}
+.c-003-leaves.l1 { border-bottom: 80px solid #003049; bottom: 30px; }
+.c-003-leaves.l2 { border-bottom: 70px solid #004263; bottom: 60px; }
+.c-003-leaves.l3 { border-bottom: 60px solid #00547c; bottom: 90px; }
+
+@keyframes c-003-sway {
+    from { transform: rotate(-1deg); }
+    to { transform: rotate(1deg); }
+}
+
+/* --- Título (EFEITO DE GRADIENTE) --- */
+.c-003-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+.c-003-title {
+    font-family: 'Knewave', 'Arial Black', sans-serif;
+    font-size: 3.2em;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: transparent;
+    background: linear-gradient(45deg, #43a047, #66bb6a, #81c784, #4fc3f7, #29b6f6);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: c-003-nature-effect 8s ease-in-out infinite;
+}
+
+@keyframes c-003-nature-effect {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- LINK DO AUTOR (ESTILO UNIFICADO) --- */
+.c-003-author-container {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    z-index: 10;
+}
+.c-003-author-link {
+    text-decoration: none;
+}
+.c-003-author-box {
     font-family: 'Outfit', sans-serif;
     display: inline-flex;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.15);
     padding: 5px 15px 5px 8px;
     border-radius: 50px;
-    font-size: 1.1em;
+    font-size: 1em;
     color: white;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
-
-.c-003-repo-link {
-    display: inline-flex;
-    align-items: center;
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    font-family: 'Outfit', sans-serif;
-    font-size: 0.9em;
-    transition: color 0.3s ease;
+.c-003-author-link:hover .c-003-author-box {
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: scale(1.05);
 }
-
-.c-003-repo-link:hover {
-    color: rgba(255, 255, 255, 1);
-}
-
-.c-003-repo-link svg {
-    width: 18px;
-    height: 18px;
-    margin-right: 8px;
-    fill: currentColor;
+.c-003-author-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    margin-right: 10px;
+    object-fit: cover;
 }
