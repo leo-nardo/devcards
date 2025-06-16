@@ -19,6 +19,7 @@ O projeto é uma sequência visual de cartas, onde cada uma é uma interpretaç�
 ```bash
 git clone [https://github.com/leo-nardo/devcards.git](https://github.com/leo-nardo/devcards.git)
 cd devcards
+```
 b) Identifique o Próximo Número
 Verifique a pasta cards/ para saber qual o próximo número da sua carta. Se a última pasta é 001, a sua será 002.
 
@@ -31,15 +32,16 @@ Dentro da sua nova pasta, crie dois arquivos: card.html e style.css.
 
 card.html (Exemplo para o card #002)
 
-HTML
+```HTML
 
 <div class="c-002-cyberpunk-card">
   </div>
 
 <div data-next-theme="Natureza Mística" style="display: none;"></div>
+```
 style.css (Exemplo para o card #002)
 
-CSS
+```CSS
 
 /* Estilos para o Card #002 */
 
@@ -49,6 +51,7 @@ CSS
   height: 400px;
   /* ... seja criativo! ... */
 }
+```
 Passo 3: Checklist de Qualidade (Obrigatório)
 Antes de enviar, garanta que sua contribuição siga estas regras:
 
@@ -61,17 +64,17 @@ Com as novas atualizações, você não precisa mais editar nenhum arquivo JavaS
 
 Passo 5: Envio (Pull Request)
 Faça o commit apenas dos arquivos da sua pasta.
-Bash
+```Bash
 
 git add cards/002/
 git commit -m "feat: Adiciona card #002 com o tema Música"
+```
 Abra um Pull Request no repositório principal.
 Obrigado por ajudar a construir nossa corrente criativa! 🚀
 
 
 ### 4. Remoção de Arquivos de Template
 
-Por fim, recomendo que você **delete a pasta `cards/002/`** do seu repositório, pois ela contém apenas arquivos de template. O novo contribuidor deverá criar a pasta e os arquivos do zero, seguindo o guia de contribuição atualizado.
+Por fim, recomendo que você **observe a pasta `cards/TEMPLATE/`** do seu repositório, pois ela contém arquivos de template. O novo contribuidor deverá criar a pasta e os arquivos do zero, seguindo o guia de contribuição atualizado.
 
 Com estas mudanças, seu projeto estará mais robusto, seguro e muito mais fácil para novos desenvolvedores contribuírem!
-```
