@@ -23,7 +23,8 @@ cd devcards
 **b) Identifique o Próximo Número**
 Verifique a pasta cards/ para saber qual o próximo número da sua carta. Se a última pasta é 001, a sua será 002.
 
-###Passo 2: Criação dos Arquivos
+### Passo 2: Criação dos Arquivos
+
 **a) Crie sua Pasta**
 Crie uma nova pasta em cards/ com o próximo número sequencial (ex: 002, 003, ...).
 
@@ -52,17 +53,21 @@ style.css (Exemplo para o card #002)
   /* ... seja criativo! ... */
 }
 ```
-###Passo 3: Checklist de Qualidade (Obrigatório)
+### Passo 3: Checklist de Qualidade (Obrigatório)
 Antes de enviar, garanta que sua contribuição siga estas regras:
 
 [ ] Prefixo Numérico: Todas as classes e IDs no seu CSS e HTML devem começar com o prefixo do seu card (ex: .c-002-).
+
 [ ] CSS Isolado: Não estilize as tags body ou html no seu style.css.
-[ ] Definição da Próxima Sugestão: Verifique se o seu card.html contém o elemento <div data-next-theme="Sua Sugestão" style="display: none;"></div>.
+
+[ ] Definição da Próxima Sugestão: Verifique se o seu card.html contém o elemento ```<div data-next-theme="Sua Sugestão" style="display: none;"></div>```.
+
 [ ] Sem Dependências Externas: Toda a arte deve ser feita com CSS puro ou SVG embutido.
-###Passo 4: Teste Localmente
+
+### Passo 4: Teste Localmente
 Com as novas atualizações, você não precisa mais editar nenhum arquivo JavaScript. Apenas inicie um servidor local e seu card será carregado automaticamente na fila.
 
-###Passo 5: Envio (Pull Request)
+### Passo 5: Envio (Pull Request)
 Faça o commit apenas dos arquivos da sua pasta.
 ```Bash
 
